@@ -1,0 +1,1052 @@
+<!-- Cached copy, generated 16:49 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+		<title>Météo gratuite Bourgoin-Jallieu 38300 - Prévisions à 7 jours pour Bourgoin-Jallieu 38300 - France - Département de l\'Isère</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-language" content="fr-FR" />
+	<meta name="geo.position" content="45.5861110;5.2736110" />
+	<meta name="geo.placename" content="Bourgoin-Jallieu, Rhône-Alpes" />
+	<meta name="ICBM" content="45.5861110, 5.2736110" />
+	<meta property="og:latitude" content="45.5861110"/>
+    <meta property="og:longitude" content="5.2736110"/>
+    <meta property="og:locality" content="Bourgoin-Jallieu"/>
+    <meta property="og:region" content="Rhône-Alpes"/>
+    <meta property="og:postal-code" content="38300"/>    <meta property="og:country-name" content="FR"/>
+	<meta name="Description" content="Prévisions météo détaillées à 7 jours et conditions actuelles pour la ville de Bourgoin-Jallieu (38300). Retrouvez également les prévisions pour la région Rhône-Alpes, et les stations en temps-réel à proximité.">
+	<meta name="keywords" content="prévisions météo, observation météo, cartes météo, météo en Rhône-Alpes, météo à Bourgoin-Jallieu, météo 38300">
+	<link rel="alternate" href="http://en-gb.previmeteo.com/fr/6615539-weather-bourgoin-jallieu.html" hreflang="en-gb" />
+	<link rel="alternate" href="http://en.previmeteo.com/fr/6615539-weather-bourgoin-jallieu.html" hreflang="en" />
+	<link rel="alternate" type="application/rss+xml" href="http://www.previmeteo.com/meteo/flux_rss.php?code_pays=FR&amp;id=6615539"/>
+	<link href="http://static.previmeteo.com/css/style.css.php?style=meteo_gratuite&v=2.1" rel="stylesheet" type="text/css" />
+			<script type="text/javascript" src="http://static.previmeteo.com/jscripts/jquery-1.4.2.js"></script>
+		<script type="text/javascript" src="/meteo/js/flot/jquery.flot.min.js"></script>
+	<script type="text/javascript" src="/meteo/js/flot/jquery.flot.plugins.min.js"></script>
+	<!--[if IE]><script type="text/javascript" src="/meteo/js/flot/excanvas.min.js"></script><![endif]-->
+	<script type="text/javascript">
+	var longitude = 5.2736110;var latitude = 45.5861110;
+			$(document).ready(function()
+		{
+				});
+						function Favoris_Nav(){if ( navigator.appName != 'Microsoft Internet Explorer' ){window.sidebar.addPanel("Météo pour Bourgoin-Jallieu 38300 - France - Département de l\'Isère","http://www.previmeteo.com/fr/6615539-meteo-bourgoin-jallieu.html","");}else{window.external.AddFavorite("http://www.previmeteo.com/fr/6615539-meteo-bourgoin-jallieu.html","Météo pour Bourgoin-Jallieu 38300 - France - Département de l\'Isère");}}
+	
+		$(function()
+		{
+			//-----------------------------------------------------------------------------------------//
+			//---------------------	 Fonctions pour le module SONDAGE 	-------------------------------//
+			//-----------------------------------------------------------------------------------------//	
+
+			$('#sondage_close').click(function(e)
+			{
+				$('#sondage_step2').fadeOut();
+				e.preventDefault();
+				return false;
+			});
+			$("#sondage_step1 input[name='note']").click(function()
+			{
+				if($("#sondage_step1 input[name='note']:checked").val() == 0)
+				{
+					$("#sondage_step2").fadeIn();
+				}
+				else
+				{
+					$.post("/meteo/Ajax/Gestion_Sondage.php", {note:$(this).val(),id_geoname:6615539,code_pays:"FR"},function(data)
+					{
+						$("#sondage_step1").fadeOut();
+						$("#sondage_step2").fadeOut();
+						
+						if(data.success == true)
+						{
+							$("#sondage_result").html("Merci, votre vote a bien été enregistré.").fadeIn();
+							createcookie();
+						}
+						else
+						{
+							$("#sondage_result").html(data.erreur).css({'color':'red'}).fadeIn();
+						}
+					});
+				}
+			});
+			$('#submit_btn').click(function(e)
+			{
+				$.post("/meteo/Ajax/Gestion_Sondage.php", {note:$("#sondage_step1 input[name='note']:checked").val(),id_geoname:6615539,code_pays:"FR",remarque:$("#remarque").val(),nom_ville:"Bourgoin-Jallieu",user_nom:$("#user_nom").val(),user_prenom:$("#user_prenom").val(),user_email:$("#user_email").val()},function(data)
+				{
+					if(data.success == true)
+					{
+						$("#sondage_step1").fadeOut();
+						$("#sondage_step2").fadeOut();
+						$("#sondage_result").html("Merci pour votre vote, nous vous répondrons dans les plus brefs délais.").fadeIn();
+						createcookie();
+					}
+					else
+					{
+						$("#sondage_result").html(data.erreur).css({'color':'red','font-weight':'bold'}).fadeIn();
+					}
+				});
+				e.preventDefault();
+				return false;
+			});
+			
+			function createcookie()
+			{
+				var now = new Date();
+				var expire = new Date();
+				expire.setFullYear(now.getFullYear());
+				expire.setMonth(now.getMonth());
+				expire.setDate(now.getDate());
+				expire.setHours('23');
+				expire.setMinutes('59');
+				document.cookie = "previmeteo_6615539"+"= true; expires=" + expire.toString() +"; path=/";
+			}
+			
+			function getCookie(name)
+			{
+				var dc = document.cookie;
+				var prefix = name + "=";
+				var begin = dc.indexOf("; " + prefix);
+				if (begin == -1) {
+					begin = dc.indexOf(prefix);
+					if (begin != 0) return null;
+				}
+				else
+				{
+					begin += 2;
+					var end = document.cookie.indexOf(";", begin);
+					if (end == -1) {
+					end = dc.length;
+					}
+				}
+				return unescape(dc.substring(begin + prefix.length, end));
+			} 
+			
+			// Vérification si cookie existant
+			var cookie = getCookie("previmeteo_6615539");
+			if(cookie != null)
+			{
+				$("#sondage_meteo_vote").html("<p>Vous avez déjà voté pour cette ville aujourd'hui.</p>");
+			}
+			
+			//-----------------------------------------------------------------------------------------//
+			//---------------------	 Fonctions pour les courbes Flot - Jquery	 ----------------------//
+			//-----------------------------------------------------------------------------------------//
+
+			function UpdatePlot(identifier,div,options,min,max)
+			{
+				addUnit = function(val, axis){return val+ '°C';}
+			    identifier = $.plot($("#"+div), options,
+		    	{
+			    	xaxis: {
+		                mode: "time",
+		                timeformat: "%H:%M",
+		                minTickSize: [1, "hour"]
+			    	},
+			    	yaxis: {
+						min:min,
+						max:max,
+						tickFormatter: addUnit
+					},
+                    points: {radius: 2},
+                    legend: {
+					    show:false,
+					    labelBoxBorderColor:"#FFF",
+					    backgroundColor:"#eee",
+					    backgroundOpacity:0.7,
+						position: "nw"
+                    },
+			    	crosshair: {mode: "x"},
+			    	grid: {
+			    		show : true,
+			    		color:"#000",
+			    		borderColor:"#dbdbdb",
+			    		borderWidth: 1,
+			    		hoverable: true,
+			    		autoHighlight: false,
+			    		clickable: true
+			    	},
+    				selection: {mode: "x"}
+		    	});
+		    	var now = new Date();
+    			var jour = now.getDate();
+    			var mois = now.getMonth();
+    			var annee = now.getFullYear();
+			    identifier.setSelection({ x1: new Date(annee, mois, jour,now.getHours()+2, 0, 0).getTime(), x2: new Date(annee, mois, jour, (now.getHours()+2+1), 0, 0).getTime() });
+			}
+			function Tooltip(div,point,event,pos,item)
+			{
+				$("#x").text(pos.x.toFixed(2));
+		    	$("#y").text(pos.y.toFixed(2));
+		        if(item)
+		        {
+		            if(point != item.datapoint)
+		            {
+		                point = item.datapoint;
+		                $("#tooltip_"+div).remove();
+		                var x = item.datapoint[0].toFixed(0),
+		                y = item.datapoint[1].toFixed(0);
+		                var date_previ = new Date();
+		                date_previ.setTime(x);
+		                var dd = date_previ.getUTCDate()+"/"+(date_previ.getUTCMonth()+1)+"/"+date_previ.getUTCFullYear()+ " à "+date_previ.getUTCHours()+ "h00";
+		                var unite = "°C";
+		                showTooltip(div,item.pageX, item.pageY," Le <b>" + dd + "</b> = " + y +" "+unite);
+		            }
+		        }
+		        else
+		        {
+		            $("#tooltip_"+div).remove();
+		            point = null;
+		        }
+			}
+			function showTooltip(div, x, y, contents)
+			{
+		        $('<div id="tooltip_'+div+'">' + contents + '</div>').css({position: 'absolute',display: 'none',top: y + 5,left: x + 5,border: '1px solid #dbdbdb',padding: '2px','background-color': '#FFF',opacity: 1}).appendTo("body").fadeIn(200);
+		    }
+			//-----------------------------------------------------------------------------------------//
+
+					
+				
+				var plot_0;
+				var tab_tmp_0 = [[1410912000000,],[1410922800000,],[1410933600000,],[1410944400000,],[1410940800000,16],[1410951600000,22],[1410962400000,23],[1410973200000,22],[1410984000000,20],[1410994800000,18]];
+				var options_0 = [{data: tab_tmp_0, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_0,"plot_0",options_0,'11','28');
+				$("#plot_0").bind("plothover", function (event, pos, item) {Tooltip("plot_0",null,event,pos,item);});
+				
+					
+				
+				var plot_1;
+				var tab_tmp_1 = [[1410994800000,18],[1411005600000,15],[1411016400000,13],[1411027200000,13],[1411038000000,21],[1411048800000,24],[1411059600000,24],[1411070400000,20],[1411081200000,17]];
+				var options_1 = [{data: tab_tmp_1, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_1,"plot_1",options_1,'8','29');
+				$("#plot_1").bind("plothover", function (event, pos, item) {Tooltip("plot_1",null,event,pos,item);});
+				
+					
+				
+				var plot_2;
+				var tab_tmp_2 = [[1411081200000,17],[1411092000000,15],[1411102800000,14],[1411113600000,14],[1411124400000,22],[1411135200000,25],[1411146000000,25],[1411156800000,21],[1411167600000,18]];
+				var options_2 = [{data: tab_tmp_2, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_2,"plot_2",options_2,'9','30');
+				$("#plot_2").bind("plothover", function (event, pos, item) {Tooltip("plot_2",null,event,pos,item);});
+				
+					
+				
+				var plot_3;
+				var tab_tmp_3 = [[1411167600000,18],[1411178400000,16],[1411189200000,16],[1411200000000,16],[1411210800000,22],[1411221600000,23],[1411232400000,25],[1411243200000,23],[1411254000000,20]];
+				var options_3 = [{data: tab_tmp_3, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_3,"plot_3",options_3,'11','30');
+				$("#plot_3").bind("plothover", function (event, pos, item) {Tooltip("plot_3",null,event,pos,item);});
+				
+					
+				
+				var plot_4;
+				var tab_tmp_4 = [[1411254000000,20],[1411264800000,17],[1411275600000,16],[1411286400000,16],[1411297200000,22],[1411308000000,23],[1411318800000,22],[1411329600000,20],[1411340400000,19]];
+				var options_4 = [{data: tab_tmp_4, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_4,"plot_4",options_4,'11','28');
+				$("#plot_4").bind("plothover", function (event, pos, item) {Tooltip("plot_4",null,event,pos,item);});
+				
+					
+				
+				var plot_5;
+				var tab_tmp_5 = [[1411340400000,19],[1411351200000,13],[1411362000000,14],[1411372800000,15],[1411383600000,23],[1411394400000,26],[1411405200000,26],[1411416000000,18],[1411426800000,16]];
+				var options_5 = [{data: tab_tmp_5, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_5,"plot_5",options_5,'8','31');
+				$("#plot_5").bind("plothover", function (event, pos, item) {Tooltip("plot_5",null,event,pos,item);});
+				
+					
+				
+				var plot_6;
+				var tab_tmp_6 = [[1411426800000,16],[1411437600000,15],[1411448400000,18],[1411459200000,17],[1411470000000,22],[1411480800000,26],[1411491600000,25],[1411502400000,16],[1411513200000,15]];
+				var options_6 = [{data: tab_tmp_6, label: "Temp. en °C",color:"#CC0000",lines:{show:true,lineWidth:1},points:{show: true}}];
+				
+				UpdatePlot(plot_6,"plot_6",options_6,'10','31');
+				$("#plot_6").bind("plothover", function (event, pos, item) {Tooltip("plot_6",null,event,pos,item);});
+				
+					});
+	</script>
+	<meta name="apple-itunes-app" content="app-id=368731538" />
+</head>
+<body onload="initialize();">
+	<div id="container">
+		<!--Début du header -->
+		<div id="header">
+	<div itemscope itemtype="http://schema.org/Organization" id="logo"><a href="http://www.previmeteo.com" title="Previmeteo : services & donnees meteo"><img itemprop="logo" src="http://static.previmeteo.com/img_css/logo-PREVIMETEO-250.png" style="display:none;" /></a><meta itemprop="name" content="PREVIMETEO" /></div>
+    	<div id="box_login"><div style="float: right;margin-right: 10px;">
+        <form id="frm_connexion_header" action="/login.php" method="post" style="margin-left:5px;">
+            <table border="0" width="100%" cellpadding="0" cellspacing="1">
+                <tr>
+                <td width="70">
+                                &nbsp;</td>
+                    <td >
+                        <input type="text" placeholder="Votre email" name="txt_email" id="txt_email"
+                                                        />
+                    </td>
+                    <td>
+                        <input type="password" placeholder="Password" size="15" name="txt_pwd" id="txt_pwd"
+                               onclick="if(this.value == 'Password') this.value='';"
+                                                        />
+                    </td>
+                    <td>
+                        <script type="text/javascript">
+                            var maintenant = new Date(),
+                                time = maintenant.getTimezoneOffset() / 60;
+                            document.write('<input type="hidden" name="gmt" id="gmt" value="' + time + '">');
+                        </script>
+                        <input type="hidden" value="/fr/6615539-meteo-bourgoin-jallieu.html" id="page_source" name="page_source" />
+                        <input type="submit" value="Connexion" name="ok" style="padding: 2px 3px 2px 3px; font-size: 12px;width: 80px" />
+                    </td>
+                    <td ><a href="/register/" title="Signup" style="color: #FFFFFF;">S'inscrire</a>&nbsp;|&nbsp;<a href="/register/password.php" title='Mot de passe oublié ?' style="color: #FFFFFF;">Mot de passe oublié</a></td><td><a href="http://en.previmeteo.com/fr/6615539-weather-bourgoin-jallieu.html" title="Weather forecast for Bourgoin-Jallieu, France"><img src="/images/UK.gif" style="padding: 4px 10px 5px 10px; "></a></td>
+                </tr>
+            </table>
+        </form></div>
+	</div>
+	
+	<div id="header_bottom">
+		<div id="left_hdr">
+			<div id="box_recherche">
+				<div id="frm_recherche">
+					<p style="font-size:18px;margin:5px">Météo locale :</p>
+					<form id="frm_recherche_header" action="/recherche/" method="get">
+						<div style="float:left;">
+                            <input type="text" name="recherche" placeholder="Ville ou code postal" id="search_box" style="height: 20px;" />
+							<select name="pays" id="select_pays" style="height: 32px;" >
+								<option value="">Choisir un pays</option>
+																<option value="DE"
+                                                                        >Allemagne</option>
+                                								<option value="AT"
+                                                                        >Autriche</option>
+                                								<option value="BE"
+                                                                        >Belgique</option>
+                                								<option value="BG"
+                                                                        >Bulgary</option>
+                                								<option value="CY"
+                                                                        >Chypre</option>
+                                								<option value="DK"
+                                                                        >Danemark</option>
+                                								<option value="ES"
+                                                                        >Espagne</option>
+                                								<option value="EE"
+                                                                        >Estonie</option>
+                                								<option value="FI"
+                                                                        >Finlande</option>
+                                								<option value="FR"
+                                     selected="selected"                                     >France</option>
+                                								<option value="GB"
+                                                                        >Grande-Bretagne</option>
+                                								<option value="GR"
+                                                                        >Grèce</option>
+                                								<option value="HU"
+                                                                        >Hongrie</option>
+                                								<option value="IE"
+                                                                        >Irlande</option>
+                                								<option value="IT"
+                                                                        >Italie</option>
+                                								<option value="LT"
+                                                                        >Lituanie</option>
+                                								<option value="LU"
+                                                                        >Luxembourg</option>
+                                								<option value="LV"
+                                                                        >Létonie</option>
+                                								<option value="MT"
+                                                                        >Malte</option>
+                                								<option value="NL"
+                                                                        >Pays-Bas</option>
+                                								<option value="PL"
+                                                                        >Pologne</option>
+                                								<option value="PT"
+                                                                        >Portugal</option>
+                                								<option value="RO"
+                                                                        >Roumanie</option>
+                                								<option value="CZ"
+                                                                        >République Tchèque</option>
+                                								<option value="SK"
+                                                                        >Slovaquie</option>
+                                								<option value="SI"
+                                                                        >Slovénie</option>
+                                								<option value="CH"
+                                                                        >Suisse</option>
+                                								<option value="SE"
+                                                                        >Suède</option>
+                                							</select>
+                        </div>
+                        <input type="submit" value="Trouver" class="buttoncss3 orange" style="margin-left: 0.4em; padding: 0.3em 0.9em; vertical-align: middle;width: 95px;" id="-submit_search" /><br />
+                        <div  id="more_countries">Plus de pays :
+                        <a href="/villes/liste_pays.php?code_cont=AF">Afrique</a> - <a href="/villes/liste_pays.php?code_cont=EU">Europe</a> - <a href="/villes/liste_pays.php?code_cont=NA">Amérique du Nord</a> - <a href="/villes/liste_pays.php?code_cont=SA">Amérique du Sud</a> - <a href="/villes/liste_pays.php?code_cont=OC">Océanie</a> - <a href="/villes/liste_pays.php?code_cont=AS">Asie</a> - <a href="/villes/liste_pays.php?code_cont=AN">Antarctique</a>                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+		<div id="right_hdr">
+			
+			
+									<div id="box_promo_1"><a href="http://my.previmeteo.com/fr/index.php?utm_source=Previmeteo&utm_medium=pave&utm_campaign=My Previmeteo" title="My Previmeteo : vos observations + nos prévisions HD sur une seule interface" style="display:block;width:100%;height:100%;" ></a></div>
+										<div id="box_promo_2">
+					<a href="http://contenu.previmeteo.com/?utm_source=Previmeteo&utm_medium=pave&utm_campaign=Contenus" title="Données météo brutes XML, modules météo et Web Services" style="display:block;width:100%;height:100%;"></a>
+				</div>
+					</div>
+	</div>
+</div>
+<div id="menu">
+
+				<ul class="dropdown dropdown-horizontal">
+					<li style="background-color: #FE4A11;font-weight:700;display: block;padding: 4px 5px 4px 5px;height:15px;border:1px solid #5F1B06;text-align: center;">
+						<a href="/index.php">Météo</a>
+						<ul class="menu_rouge" style="text-align: left;">
+							<li><span class="dir"><a href="/temps-reel/carte-meteo.php">Observations météo</a></span>
+							<ul class="menu_rouge" style="margin-left:180px;margin-top: -25px">
+							<li><a href="/services/releve-observation/?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Releves" title="Relevés d'observation / Relevés d'intempéries">Relevés d'observations</a></li>
+							<li><a href="/temps-reel/carte-meteo.php" title="Météo temps réel">Carte météo temps réel</a></li>
+							<li><a href="/temps-reel/images-satellite.php" title="Images satellites en Europe">Images satellite</a></li>
+							<li><a href="/actu/informations/70-echos-radar-de-precipitations.html" title="Echo radar de precipitations Europe">Echos radar</a></li>
+							<!-- <li><a href="/bulletins/meteo-des-neiges.php" title="météo des neiges en France !">Bulletin Neige en France</a></li>!-->
+							<li><a href="/stations/" title="Stations météo professionnelles">Acheter ma station connectée</a></li>
+							<li><a href="/temps-reel/new-station.php" title="Connectez votre station météo !">Connecter ma station météo</a></li>
+							
+							</ul>
+														
+							<li><span class="dir"><a href="/recherche/">Prévisions météo locales</a></span>
+							<ul class="menu_rouge" style="margin-left:180px;margin-top: -25px">
+							<li><a href="/recherche/" title="Prévisions météo locales">Rechercher votre ville</a></li>
+							<li><a href="/cartes/meteo-france.php" title="Prévisions météo en France à 5 jours" >Météo en France</a>
+							<li><a href="/cartes/recherche-meteo-departements-france.php" title="Prévisions méréo par département à 5 jours" >Météo des départements</a>
+							</ul>
+							<li><span class="dir"><a href="/cartes/vent.php">Cartes météo Monde</a></span>
+							<ul class="menu_rouge" style="margin-left:180px;margin-top: -25px">
+							<li><a href="/cartes/vent.php" title="Carte des vents en surface">Carte des vents</a></li>
+							<li><a href="/cartes/nuages.php" title="Carte de a couverture nuageuse">Carte des nuages</a></li>
+							<li><a href="/cartes/temperature.php" title="Carte des températures au sol">Carte des températures</a></li>
+							<li><a href="/cartes/pluie.php" title="Carte des précipitations">Carte des précipitations</a></li>
+							</ul>
+							<li><a href="http://my.previmeteo.com?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=My Previmeteo" title="Ma station et mes observations sur une seule interface">My Previmeteo</a></li>
+							<li><span class="dir"><a href="#">Applications</a></span>
+							<ul class="menu_rouge" style="margin-left:180px;margin-top: -25px">
+							<li><a href="http://itunes.apple.com/fr/app/previmeteo/id368731538?mt=8" target="_blank" title="Application météo sur votre iPhone">Application iPhone</a></li>
+							<li><a href="https://itunes.apple.com/fr/app/my-previmeteo/id659438295?mt=8" target="_blank" title="Application My Previmeteo sur votre iPad">Application iPad</a></li>
+							<li><a href="http://apps.facebook.com/previmeteo/" target="_blank" title="Application Facebook de Previmeteo">Application Facebook</a></li>
+							<li><a href="/cartes/widget.php" title="Widget des cartes météo">Widget des cartes météo</a></li>
+							</ul>
+						</ul>
+					</li>
+					<li style="background-color: #F37A0C;font-weight:700;display: block;padding: 4px 5px 4px 5px;height:15px;border:1px solid #5F1B06;text-align: center;">
+						<a href="/services-pro/">Services Météo</a>
+						<ul class="menu_orange" style="text-align: left;z-index: 597;">
+							<li><a href="/services/releve-observation/?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Releves" title="Relevés d'observation / Relevés d'intempéries">Relevés d'observations</a></li>
+							<li><a href="/services-pro/aide-decision-meteo.php?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Link_Extranet" title="Système météo d'aide à la décision">Système d'aide à la décision</a></li>
+							<li><a href="/services-pro/bulletin-meteo-detaille.php?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Link_Bulletin_pdf" title="Bulletins météo détaillés">Bulletins météo détaillés</a></li>
+							<li><a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Link_Abonnement" title="Abonnement au service de prévisions détaillées">Abonnements Pro</a></li>
+							<li><a href="/services-pro/meteo-sur-mesure.php" title="Service de météo sur mesure">Météo sur mesure</a></li>
+							<li><a href="http://my.previmeteo.com?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=My Previmeteo" title="Stations météo professionnelles">Stations météo connectées</a></li>
+						</ul>
+					</li>
+					<li style="background-color: #79A005;font-weight:700;display: block;padding: 4px 5px 4px 5px;height:15px;border:1px solid #5F1B06;text-align: center;">
+						<a href="/services-pro/presentation.php">Données Météo</a>
+						<ul class="menu_vert" style="text-align: left;">
+							<li><a href="/services/releve-observation/?utm_source=Previmeteo&utm_medium=menu header&utm_campaign=Releves" title="Données météo historiques">Données historiques</a></li>
+							<li><a href="/services-pro/api-meteo-google.php" title="API meteo">API meteo</a></li>
+							<li><a href="/services-pro/xml-web-services.php" title="Données météo et Web Services">Données XML / Web Services</a></li>
+							<li><span class="dir"><a href="/services-pro/sites-internet.php" title="Widget météo pour votre site internet">Services pour les webmasters</a></span>
+							<ul class="menu_vert" style="margin-left:180px;margin-top: -25px">
+							<li><a href="/services-pro/sites-internet.php" title="Widget météo pour votre site internet">Widgets météo</a></li>
+							<li><a href="/services-pro/cartes-meteo.php" title="Cartes météo pour votre site internet">Cartes météo</a></li>
+							</ul>
+							<li><a href="/services-pro/fichiers-grib-meteo.php" title="Modèles météo" >Fichiers Grib météo</a></li>
+							
+						</ul>
+					</li>
+					<li style="background-color: #2587C6;font-weight:700;display: block;padding: 4px 5px 4px 5px;height:15px;border:1px solid #5F1B06;text-align: center;">
+						<a href="/about/previmeteo.php">A propos</a>
+						<ul class="menu_bleuc" style="text-align: left;">
+							<li><a href="/about/previmeteo.php" title="Previmeteo, présentation de l'entreprise">Previmeteo</a></li>
+							<li><a href="/about/conditions.php" title="Termes et conditions">Conditions</a></li>
+							<li><a href="/about/questions-frequentes.php" title="Questions fréquemment posées">FAQ</a></li>
+							<li><a href="/about/logos.php" title="Logos de Previmeteo">Logos</a></li>
+							<li><a href="/about/recrutement.php" title="Previmeteo recrute !">Recrutement</a></li>
+							<li><span class="dir"><a href="#">Réseaux sociaux</a></span>
+							<ul class="menu_bleuc" style="margin-left:180px;margin-top: -25px">
+							<li><a href="https://www.facebook.com/Previmeteo" target="_blank" title="Suivez-nous sur Facebook">Page Facebook</a></li>
+							<li><a href="http://www.linkedin.com/company/previmeteo-sarl" target="_blank" title="Suivez-nous sur LinkedIn">Page LinkedIn</a></li>
+							<li><a href="http://www.viadeo.com/fr/company/previmeteo" target="_blank" title="Suivez-nous sur Viadeo">Page Viadeo</a></li>
+							<li><a href="https://twitter.com/previmeteo" target="_blank" title="Suivez-nous sur Twitter">Page Twitter</a></li>
+							</ul>
+							<li><a href="/about/contact.php" title="Contactez-nous !">Contactez-nous</a></li>
+						</ul>
+					</li>
+					<li style="background-color: #880FA2;font-weight:700;display: block;padding: 4px 5px 4px 5px;height:15px;border:1px solid #5F1B06;text-align: center;">
+						<a href="/about/contact.php" title="Contactez-nous !">Contact</a>
+					</li>
+				</ul>
+			</div>
+		<!--Fin du header -->
+		<!--Début du wrapper-->
+		<div id="wrapper">
+			<div id="main_content_left">
+				<div id="localisation">
+					<ul>
+    					<li><a href="/" title="Accueil Prévimétéo">Accueil</a></li>
+        				<li>&gt;</li>
+        				<li>Prévisions</li>
+        				<li>&gt;</li>
+        				<li><a href='/villes/liste_regions.php?code_pays=FR' title="Plus de prévisions météo : France">France</a></li><li>&gt;</li>        				<li><a href='/villes/liste_depts.php?code_pays=FR&code_region=B9' title="Plus de prévisions météo : Rhône-Alpes">Rhône-Alpes</a></li><li>&gt;</li>        				<li><a href='/villes/liste_villes.php?code_pays=FR&code_region=B9&code_dept=38' title="Toute les ville dans Département de l\'Isère">L\'isère</a></li><li>&gt;</li>        				<li>
+	        				<h1>Météo Bourgoin-Jallieu (38300)</h1>
+        				</li>
+				    
+				    <a href="javascript:void(Favoris_Nav());" id="box_favoris" title="Ajouter à vos favoris"><img src="http://static.previmeteo.com/img_css/icon_favoris.png" width="16px" height="16px" alt="Ajouter à vos favoris"/></a></ul>
+				</div>
+				<div id="contenu_principal">
+					<div id="meteo">
+						<!--Début des prévisions météo-->
+												<div id="slider"><ul class="navigation"><li><a href="#id_0" id="0" class="change_days" style="font-size:11px;">Mer. 17 Sep.</a></li><li><a href="#id_1" id="1" class="change_days" style="font-size:11px;">Jeu. 18 Sep.</a></li><li><a href="#id_2" id="2" class="change_days" style="font-size:11px;">Ven. 19 Sep.</a></li><li><a href="#id_3" id="3" class="change_days" style="font-size:11px;">Sam. 20 Sep.</a></li><li><a href="#id_4" id="4" class="change_days" style="font-size:11px;">Dim. 21 Sep.</a></li><li><a href="#id_5" id="5" class="change_days" style="font-size:11px;">Lun. 22 Sep.</a></li><li><a href="#id_6" id="6" class="change_days" style="font-size:11px;">Mar. 23 Sep.</a></li></ul><div class="scroll"><div class="scrollContainer">										 	 <div class="panel" id="id_0" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Saint Renaud</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/22.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h18 - 19h49</p>
+												</div>
+												<p class="prev_content">Alternance de nuages et d'éclaircies le matin avec des orages possibles dans l'après-midi. Le ciel de la soirée sera complètement dégagé. <strong style="color:black"><br>Températures : mini 16&deg;C / maxi 23&deg;C. Cumul de pluie : environ 2 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_0_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_0_0"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud Sud-Est</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_0_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_0_1"><img src="http://static.previmeteo.com/picto_mt_60/12.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_0_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_0_2"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud Sud-Est</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_0"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_1" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Sainte Nadège</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/23.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h19 - 19h47</p>
+												</div>
+												<p class="prev_content">Le matin, le brouillard risque de réduire la visibilité avec une alternance de nuages et d'éclaircies qui occupera l'après-midi. La visibilité en soirée sera limitée par un risque de brouillard. <strong style="color:black"><br>Températures : mini 13&deg;C / maxi 25&deg;C. Cumul de pluie : environ 0 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_1_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_1_0"><img src="http://static.previmeteo.com/picto_mt_60/11.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud Sud-Ouest</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_1_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_1_1"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent modéré 20-40 km/h du Sud Sud-Ouest</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_1_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_1_2"><img src="http://static.previmeteo.com/picto_mt_60/11.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_1"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_2" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Sainte Emilie</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/24.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h20 - 19h45</p>
+												</div>
+												<p class="prev_content">Le soleil sera voilé par quelques nuages le matin avec un après-midi particulièrement ensoleillé. La visibilité en soirée sera limitée par un risque de brouillard. <strong style="color:black"><br>Températures : mini 14&deg;C / maxi 25&deg;C. Cumul de pluie : environ 0 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_2_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_2_0"><img src="http://static.previmeteo.com/picto_mt_60/1.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_2_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_2_1"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent modéré 20-40 km/h du Sud Sud-Ouest</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_2_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_2_2"><img src="http://static.previmeteo.com/picto_mt_60/11.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_2"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_3" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Saint Davy</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/25.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h22 - 19h43</p>
+												</div>
+												<p class="prev_content">Le matin, le brouillard risque de réduire la visibilité avec une alternance de nuages et d'éclaircies qui occupera l'après-midi. En soirée, il y aura une alternance de nuages et d'éclaircies. <strong style="color:black"><br>Températures : mini 16&deg;C / maxi 25&deg;C. Cumul de pluie : environ 0 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_3_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_3_0"><img src="http://static.previmeteo.com/picto_mt_60/11.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud Sud-Ouest</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_3_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_3_1"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible à modéré 10-20 km/h du Sud Sud-Est</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_3_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_3_2"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud Sud-Est</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_3"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_4" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Saint Matthieu</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/26.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h23 - 19h41</p>
+												</div>
+												<p class="prev_content">Des averses alterneront avec les éclaircies durant la matinée avec une alternance de nuages et d'éclaircies qui occupera l'après-midi. Le ciel de la soirée sera complètement dégagé. <strong style="color:black"><br>Températures : mini 16&deg;C / maxi 23&deg;C. Cumul de pluie : environ 1 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_4_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_4_0"><img src="http://static.previmeteo.com/picto_mt_60/6.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud-Ouest</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_4_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_4_1"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Nord</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_4_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_4_2"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h d'Est</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_4"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_5" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Saint Maurice</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/27.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h24 - 19h39</p>
+												</div>
+												<p class="prev_content">La journée sera particulièrement ensoleillée. En soirée, il y aura une alternance de nuages et d'éclaircies. <strong style="color:black"><br>Températures : mini 15&deg;C / maxi 26&deg;C. Cumul de pluie : environ 0 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_5_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_5_0"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Nord</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_5_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_5_1"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du NNO</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_5_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_5_2"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du NNO</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_5"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																				 	 <div class="panel" id="id_6" style="width: 665px;">
+												<div class="prev_top">
+													<p class="saintdujour">Saint Constant</p>
+													<p class="lune"><img src="http://static.previmeteo.com/picto_ln_31/28.png" alt="Pictogramme lune" width="31px" height="31px"/></p>
+													<p class="ephemeride">Lever / Coucher : 07h25 - 19h37</p>
+												</div>
+												<p class="prev_content">Des averses alterneront avec les éclaircies durant la matinée avec une alternance de nuages et d'éclaircies qui occupera l'après-midi. Le ciel de la soirée sera juste voilé par quelques nuages. <strong style="color:black"><br>Températures : mini 15&deg;C / maxi 26&deg;C. Cumul de pluie : environ 1 mm</strong></p>
+												 <div>
+													<div class="prev_periode" id="prev_periode_6_0" >
+														<p class="prev_lib_periode">Matin</p>
+														<div class="prev_picto" id="picto_6_0"><img src="http://static.previmeteo.com/picto_mt_60/6.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_6_1" >
+														<p class="prev_lib_periode">Après-midi</p>
+														<div class="prev_picto" id="picto_6_1"><img src="http://static.previmeteo.com/picto_mt_60/2.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Nord Nord-Est</p>
+																													</div>
+													</div>
+													<div class="prev_periode" id="prev_periode_6_2" >
+														<p class="prev_lib_periode">Soirée</p>
+														<div class="prev_picto" id="picto_6_2"><img src="http://static.previmeteo.com/picto_mt_60/1.png" alt="Pictogramme météo" width="60" height="60" /></div>
+														<div class="prev_donnees">
+															<p>Vent faible 0-10 km/h du Sud-Est</p>
+																													</div>
+													</div>
+												</div>
+												<div style="height:90px;width:650px;clear:both;font-size:13px;margin-left:5px" id="plot_6"></div>
+												<p style="text-align:right">Mise à jour le 17/09 à 12h44, prochaine le 18/09 à 01h&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Meteo&utm_campaign=Lien detail meteo gratuite" title="Météo heure par heure" style="font-size:13px;" >>>> Météo heure par heure pour Bourgoin-Jallieu >>></a></p>											</div>
+											
+																			</div><!-- Fin div scrollContainer-->
+								</div><!-- Fin div scroll-->
+							</div><!-- Fin div slider-->
+<table border="0" width="665px"><tr><td align="left" valign="top">
+<!--pub adsense texte-->
+							<div align="center"><script type='text/javascript'>
+<!--//<![CDATA[
+   document.MAX_ct0 ='';
+   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("zoneid=164048");document.write("&amp;nodis=1");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'></scr"+"ipt>");
+//]]>-->
+</script>
+							</div>
+						<!-- fin pub adsense -->
+</td><td align="middle" valign="top">
+</td></tr><tr><td colspan="2"><div id="fb-root"></div><script src="http://connect.facebook.net/fr_FR/all.js#xfbml=1"></script><fb:comments href="www.previmeteo.com/fr/6615539-meteo-bourgoin-jallieu.html" num_posts="10" width="665"></fb:comments><br />
+</td></tr></table>
+							
+													<!--Début du bloc Actuellement-->
+						<div id="box_metar">
+							<div id="metar_top">
+								<p id="titre_left">Actuellement à proximité <a href='/metar/LFLS-grenoble-st.-geoirs.html' title='Météo pour Grenoble / St. Geoirs' style='font-size:12px;'>(Météo pour Grenoble / St. Geoirs)</a></p>
+								<p id="titre_right">Météo en temps réel</p>
+							</div>
+							<div id="metar_content">
+								<p id="metar_heure">Heure du rapport : 17/09/2014 à 16:30</p>
+								<div id="metar_picto"><img src="http://static.previmeteo.com/picto_mt_60/0.png" alt="Pictogramme météo" width="60px" height="60px" /></div>
+								<div id="metar_donnees">
+									<p><b>Température :</b>
+																					<b id="metar_temp" style="color:#FF1200">26 °C</b>
+																			</p>
+									<p>
+										<b>Vitesse du vent :</b>
+										28 km/h |
+										<b>Direction : </b>
+										230 °									</p>
+									<p><b>Rafales : </b> 28 km/h </p>									<p><b>Visibilité :</b>
+																					10000 m | <b>Humidité :</b> 45 %
+																			</p>
+									<p><b>Température ressentie :</b> 26 °C</p>
+								</div>
+								<p style="clear:both;">
+									<b>Point de rosée :</b>
+										13 °C |
+									<b>Pression :</b>
+										1011 hPa								</p>
+								<!-- <p>
+									<b>Nuages :</b>
+									nc								</p>-->
+							</div>
+							<!--<div id="gmap_content">
+								<div id="map" style="width: 287px; height: 160px;"></div>
+							</div>-->
+						</div>
+						<!--Fin du bloc Actuellement-->
+													<div id="bottom_prev">
+								<div id="bottom_prev_left">
+																			<div id="pub_interne_box"><a href="/services/abonnements.php" title="Plus d'informations sur notre abonnnement Platinium" style="display:block;width:100%;height:100%;"></a></div>
+																		</div><!-- Fin div bottom_prev_left-->
+								<div id="bottom_prev_right">
+									<div id="flash_pub_box">
+										<div id="box_5_pub" style="margin-left:10px;margin-top:10px;">
+	<script type="text/javascript">google_ad_client="pub-2445108409444273";google_ad_slot="1080572756";google_ad_width=300;google_ad_height=250;</script>
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+									</div>
+																			<p class="titre_box" style="margin-left:10px;border-bottom:2px solid #FFCD7F;">Impressions PDF : </p>
+										<div style="margin-left:40px;border:2px solid #FF9C00;width:197px;height:65px;text-align:center;padding-top:10px;">
+											<a href="/cartes/cartes-meteo-pdf.php?id_dpt=38" title="Fichier PDF à imprimer - Prévisions météo à 2 jours pour le département de l\'isère" rel="external" onClick="_gaq.push(['_trackEvent', 'Download', 'ok', 'pdf 38']);">
+												<img src="http://static.previmeteo.com/img_mod_cartes/impression_pdf.gif" alt="Prévisions météo en PDF" width="150px" height="56px"/>
+											</a>
+										</div>
+																	</div><!-- Fin div bottom_prev_left-->
+								<div id="box_5_top">
+	<h3>Météo des principales villes</h3>
+	<table width="100%" cellspacing="0"><tr><td width="50%"><table  cellspacing="0">
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/2996944-meteo-lyon.html" class="puce" title="Météo pour Lyon">
+				Lyon				</a>
+
+				<br /><a href="/fr/2996944-meteo-lyon.html" title="Météo pour Lyon" style="color:#3F3F3F;text-decoration:none;">69000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/2980291-meteo-saint-etienne.html" class="puce" title="Météo pour Saint-Etienne">
+				Saint-Etienne				</a>
+
+				<br /><a href="/fr/2980291-meteo-saint-etienne.html" title="Météo pour Saint-Etienne" style="color:#3F3F3F;text-decoration:none;">42100 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">14/20 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/3014728-meteo-grenoble.html" class="puce" title="Météo pour Grenoble">
+				Grenoble				</a>
+
+				<br /><a href="/fr/3014728-meteo-grenoble.html" title="Météo pour Grenoble" style="color:#3F3F3F;text-decoration:none;">38000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">15/25 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/2968254-meteo-villeurbanne.html" class="puce" title="Météo pour Villeurbanne">
+				Villeurbanne				</a>
+
+				<br /><a href="/fr/2968254-meteo-villeurbanne.html" title="Météo pour Villeurbanne" style="color:#3F3F3F;text-decoration:none;">69100 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/2971053-meteo-valence.html" class="puce" title="Météo pour Valence">
+				Valence				</a>
+
+				<br /><a href="/fr/2971053-meteo-valence.html" title="Météo pour Valence" style="color:#3F3F3F;text-decoration:none;">26000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+			</table>
+	</td>
+	<td width="50%">
+	<table width="50%" cellspacing="0">
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/3027422-meteo-chambery.html" class="puce" title="Météo pour Chambery">
+				Chambery				</a>
+
+				<br /><a href="/fr/3027422-meteo-chambery.html" title="Météo pour Chambery" style="color:#3F3F3F;text-decoration:none;">73000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">13/22 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/2970072-meteo-venissieux.html" class="puce" title="Météo pour Venissieux">
+				Venissieux				</a>
+
+				<br /><a href="/fr/2970072-meteo-venissieux.html" title="Météo pour Venissieux" style="color:#3F3F3F;text-decoration:none;">69200 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/3037543-meteo-annecy.html" class="puce" title="Météo pour Annecy">
+				Annecy				</a>
+
+				<br /><a href="/fr/3037543-meteo-annecy.html" title="Météo pour Annecy" style="color:#3F3F3F;text-decoration:none;">74000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">12/20 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/3031009-meteo-bourg-en-bresse.html" class="puce" title="Météo pour Bourg-en-Bresse">
+				Bourg-en-Bresse				</a>
+
+				<br /><a href="/fr/3031009-meteo-bourg-en-bresse.html" title="Météo pour Bourg-en-Bresse" style="color:#3F3F3F;text-decoration:none;">01000 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+				<tr>
+			<td class="box_5_table_td">
+				<a href="/fr/3029096-meteo-caluire-et-cuire.html" class="puce" title="Météo pour Caluire-et-Cuire">
+				Caluire-et-Cuire				</a>
+
+				<br /><a href="/fr/3029096-meteo-caluire-et-cuire.html" title="Météo pour Caluire-et-Cuire" style="color:#3F3F3F;text-decoration:none;">69300 Rhône-Alpes</a>
+			</td>
+			<td class="box_5_table_td temp_ville">16/24 °C</td>
+			<td class="box_5_table_td"><img src="http://static.previmeteo.com/picto_mt_30/12.png" height="30px" width="30px" alt="Pictogramme"/></td>
+		</tr>
+			</table>
+	</td></tr></table>
+</div>
+							</div><!-- Fin div bottom_prev-->
+												<!--Fin des prévisions météo-->
+					</div><!--Fin div meteo-->
+				</div><!--Fin div contenu_principal-->
+			</div><!--Fin div main_content_left-->
+			<div id="main_content_right">
+									<div id="sondage_meteo">
+						<h3>Votre avis sur cette prévision :</h3>
+						<div id="sondage_meteo_vote">
+							<p id="sondage_result" style="display:none;"></p>
+							<div id="sondage_step1">
+								<div><input type="radio" name="note" class="radio_note" value="3"> Juste</div>
+								<div><input type="radio" name="note" class="radio_note" value="2"> Plutôt juste</div>
+								<div><input type="radio" name="note" class="radio_note" value="1"> Plutôt fausse</div>
+								<div><input type="radio" name="note" class="radio_note" value="0"> Complètement fausse</div>
+							</div>
+							<form id="sondage_step2" style="display:none;">
+								<p>N'hésitez pas à nous faire part de vos remarques.</p>
+								<div class="input"><span>Adresse mail : </span><input type="text" name="user_email" id="user_email" value="" /></div>
+								<div class="input"><span>Nom : </span><input type="text" name="user_nom" id="user_nom" value="" /></div>
+								<div class="input"><span>Prenom : </span><input type="text" name="user_prenom" id="user_prenom" value="" /></div>
+								<textarea id="remarque" name="remarque" style="width:100%;height:90px;margin:0 0 10px 0"></textarea>
+								<a href="#" id="sondage_close">Annuler</a>&nbsp;
+								<button type="button" id="submit_btn">Envoyer</button>
+							</form>
+						</div>
+					</div>
+								<div id="box_meteo" style="border:1px solid #CFCFCF;padding-top: 0px;padding-left: 10px;padding-bottom: 10px;width:283px;">
+<p id="titre_pub">Nos services :</p>
+<h4>Météo Perso :</h4>
+<li><a href="/services/meteo-par-email2.php?utm_source=Previmeteo&utm_medium=Link_Mailing&utm_campaign=Link_Right&id=6615539">Ma météo par email</a></li><li><a href="http://apps.facebook.com/previmeteo/?id_geoname=6615539&code_pays=FR">Ma météo sur Facebook</a></li>
+<li><a href="/cartes/cartes-meteo-pdf.php?id_dpt=38" title="Fichier PDF à imprimer - Prévisions météo à 2 jours pour le département de l\'isère" rel="external">Bulletin départemental (pdf)</a></li><li><a href="/temps-reel/new-station.php?utm_source=Previmeteo&utm_medium=Link_Station&utm_campaign=Link_Right">Ma station sur Previmeteo</a></li>
+<li><a href="/services/releve-observation/index.php?id=6615539&utm_source=Previmeteo&utm_medium=Link_Releve&utm_campaign=Icon_Right">Attestation intempérie</a></li><h4>Météo Professionnels :</h4>
+<li><a href="/services/abonnements.php?utm_source=Previmeteo&utm_medium=Link_Abonnement&utm_campaign=Link_Right">Abonnements meteo h/h</a>
+</li>
+<li><a href="/services/releve-observation/index.php?id=6615539&utm_source=Previmeteo&utm_medium=Link_Releve&utm_campaign=Icon_Right">Relevés météo historiques</a></li><li><a href="/services-pro/bulletin-meteo-detaille.php?utm_source=Previmeteo&utm_medium=Link_Mailing&utm_campaign=Link_Right">Bulletins météo détaillés</a></li>
+<li><a href="/stations/my-previmeteo-davis-vantage-vue.html?utm_source=Previmeteo&utm_medium=Link_VantageMyPM&utm_campaign=Link_Right">Station météo connectée</a></li>
+<li><a href="http://my.previmeteo.com?utm_source=Previmeteo&utm_medium=Link_MyPM&utm_campaign=Link_Right">My Previmeteo</a></li>
+<h4>Météo Entreprises :</h4>
+<li><a href="/services-pro/aide-decision-meteo.php?utm_source=Previmeteo&utm_medium=Link_AideDecision&utm_campaign=Link_Right">Extranet météo d'aide à la décision</a></li>
+<li><a href="/services-pro/fichiers-grib-meteo.php?utm_source=Previmeteo&utm_medium=Link_MeteoHD&utm_campaign=Link_Right">Modélisation météo HD</a></li>
+<li><a href="/services-pro/sites-internet.php?utm_source=Previmeteo&utm_medium=Link_Webmaster&utm_campaign=Link_Right">Contenu météo webmasters</a></li>
+<li><a href="/services-pro/meteo-sur-mesure.php?utm_source=Previmeteo&utm_medium=Link_SurMesure&utm_campaign=Link_Right">Solutions météo sur mesures</a></li>
+</div>
+<p id="result_favoris"></p>				<div id="box_4_pub">
+				<script type='text/javascript'>
+<!--//<![CDATA[
+   document.MAX_ct0 ='';
+   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("zoneid=102038");document.write("&amp;nodis=1");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'></scr"+"ipt>");
+//]]>--></script>
+			
+			
+		</div>
+				<div id="details" style="border:1px solid #CFCFCF;padding-top: 0px;padding-left: 10px;padding-bottom: 10px;width:283px;">
+	<p class='titre_detail'>Bourgoin-Jallieu 38300</p><p><b>Bourgoin-Jallieu</b> (38300) est une ville qui se situe en France dans la région <b>Rhône-Alpes</b> , plus précisemment dans le : <b>Département de l\'Isère</b> (38).<br /><br />Arrondissement de La Tour-du-Pin (382)<br /><b>Nombre d'habitants</b> : 23517<br /><b>Code Insee</b> : 38053<br /><b>Longitude</b> : 5°E 16'<br /><b>Latitude</b> : 45°N 35'- Europe/Paris</p><!-- <br />
+<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/fr_FR"></script><script type="text/javascript">FB.init("89c2c00abb59a33685b0a296a2d4ac92");</script><fb:fan profile_id="139165293914" stream="" connections="" width="300"></fb:fan> -->
+<p class='titre_detail'>Prévisions météo à proximité : </p><p><a href='/fr/14665-meteo-jallieu.html' title="Météo à JALLIEU (38300)">Météo à JALLIEU 38300</a><br /><a href='/fr/3021231-meteo-domarin.html' title="Météo à Domarin (38300)">Météo à Domarin 38300</a><br /><a href='/fr/2994065-meteo-meyrie.html' title="Météo à Meyrie (38300)">Météo à Meyrie 38300</a><br /><a href='/fr/2995154-meteo-maubec.html' title="Météo à Maubec (38300)">Météo à Maubec 38300</a><br /><a href='/fr/2982102-meteo-ruy.html' title="Météo à Ruy (38300)">Météo à Ruy 38300</a><br /><a href='/fr/2981873-meteo-saint-alban-de-roche.html' title="Météo à Saint-Alban-de-Roche (38300)">Météo à Saint-Alban-de-Roche 38300</a><br /><a href='/fr/2990329-meteo-nivolas-vermelle.html' title="Météo à Nivolas-Vermelle (38300)">Météo à Nivolas-Vermelle 38300</a><br /><a href='/fr/2998136-meteo-l-isle-d-abeau.html' title="Météo à L'Isle-d'Abeau (38080)">Météo à L'Isle-d'Abeau 38080</a><br /><a href='/fr/2977001-meteo-saint-savin.html' title="Météo à Saint-Savin (38300)">Météo à Saint-Savin 38300</a><br /></p><p><a href='/villes/liste_villes.php?code_pays=FR&code_region=B9&code_dept=38' title='Villes dans le Département de l\'Isère'>Toutes les villes dans le Département de l\'Isère</a><br /></p><p class='titre_detail'>Stations pro. à proximité : </p><p><a href='/metar/LFLS-grenoble-st.-geoirs.html' title="Météo en temps réel à la station de Grenoble / St. Geoirs - LFLS">Grenoble / St. Geoirs - LFLS</a><br /></p><p class='titre_detail'>Stations personnelles à proximité : </p><p><a href='/temps-reel/apercu-station.php?station=387'>VILLEFONTAINE (38-isère) (5.16,45.61)</a><br /><a href='/temps-reel/apercu-station.php?station=240'>Station WS2355 Priay hameau de bellegarde (01160)° (5.3,46.01)</a><br /><a href='/temps-reel/apercu-station.php?station=206'>Les Côtes d'Arey (4.86,45.46)</a><br /><a href='/temps-reel/apercu-station.php?station=284'>Station à Saint Denis lès Bourg (5.2,46.23)</a><br /><a href='/temps-reel/apercu-station.php?station=506'>Ben69 (4.69,45.74)</a><br /></p>
+</div>
+			</div>
+		</div><!--Fin du wrapper-->
+		<div id="footer">
+	<div id="links">
+		<label>SERVICES METEO :</label>
+		<ul class="ul_list_footer">
+			<li class="li_list_footer"><a href="/services/certificats-meteo.php" title="Certificat d'intempérie ou relevé d'observation météo">Certificat d'intempérie</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/services/abonnements.php" title="Nos abonnements météo pour profiter des meilleurs prévisions météo">Abonnement météo</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/services/meteo-par-sms.php" title="Découvrez nos bulletins météo par SMS">Bulletins par SMS</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/services/meteo-par-email.php" title="Les prévisions météo gratuite à 5 jours par e-mail">Météo gratuite par E-mail</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/services-pro/presentation.php" title="Nos services météo pour les professionnels">Services pour professionnels</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/services-pro/meteo-internet.php" title="Webservice météo, module météo pour des sites internet ou des intranets, bulletins météo en vidéo">Contenu météo pour webmaster</a></li>
+		</ul>
+		<br /><br />
+		<label>PREVIMETEO :</label>
+		<ul class="ul_list_footer">
+			<li class="li_list_footer"><a href="/about/contact.php" title="Une question, un problème ? N'hésitez pas à nous contacter">Nous contacter</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/about/previmeteo.php" title="Previmeteo, la société">Qui sommes-nous ?</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/about/conditions-generales.php" title="Conditions générales">Conditions générales</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/about/annonceurs.php" title="Devenir annonceurs sur Previmeteo ?">Annonceurs</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/about/recrutement.php" title="Previmeteo recrute !">Recrutement</a></li>
+			<li class="li_list_footer">|</li>
+			<li class="li_list_footer"><a href="/about/sitemap.php" title="Plan du site">Plan du site</a></li>
+		</ul>
+		<p style="clear:both;text-align:right;margin-right:4px;">© 2002-2014 Previmeteo SAS</p>
+	</div>
+</div>
+<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-221411-4']);_gaq.push(['_trackPageview']);_gaq.push(['_trackPageLoadTime']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(ga);})();</script>
+
+	</div><!--Fin du container-->
+	<script type="text/javascript" src="http://static.previmeteo.com/jscripts/meteo.js"></script>
+	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEn8YB_9o5s5KVH5tPVKtjIJjcGHLt4hE&sensor=false"></script>
+	<script type="text/javascript" src="/meteo/GoogleMap/infobubble.js"></script>
+	<script type="text/javascript" src="/meteo/GoogleMap/googlemapv3.js"></script> -->
+</body>
+</html>

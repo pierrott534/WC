@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-15" ?>
+<maintag>
+<misc>
+<data misc="refresh_time">18/10/16 15:30:06</data>
+</misc>
+<misc>
+<data misc="forecast_nr">25</data>
+</misc>
+<realtime>
+<data misc="location">Bourgoin-Jallieu</data>
+</realtime>
+<realtime>
+<data realtime="forecast_text">Showery early, improving</data>
+</realtime>
+<realtime>
+<data realtime="temp">19.6 C</data>
+</realtime>
+<realtime>
+<data realtime="intemp">20 C</data>
+</realtime>
+<realtime>
+<data realtime="hum">52.3 </data>
+</realtime>
+<realtime>
+<data realtime="inhum">26.8 </data>
+</realtime>
+<realtime>
+<data realtime="press">1018 hPa</data>
+</realtime>
+<realtime>
+<data realtime="tempunit">&deg;C</data>
+</realtime>
+<realtime>
+<data realtime="pressunit">hPa</data>
+</realtime>
+<realtime>
+<data realtime="rainunit">mm</data>
+</realtime>
+<realtime>
+<data realtime="windunit">kmh</data>
+</realtime>
+<realtime>
+<data realtime="rfall">12</data>
+</realtime>
+<realtime>
+<data realtime="rhour">14</data>
+</realtime>
+<realtime>
+<data realtime="rrate">13</data>
+</realtime>
+<realtime>
+<data realtime="wgust">23</data>
+</realtime>
+<realtime>
+<data realtime="wdir">N</data>
+</realtime>
+<realtime>
+<data realtime="windspeed">2.4</data>
+</realtime>
+<realtime>
+<data today="today_temp_low">13.8 C</data>
+</realtime>
+<realtime>
+<data today="today_temp_high">24.8 C</data>
+</realtime>
+<realtime>
+<data today="today_press_low">1018 hPa</data>
+</realtime>
+<realtime>
+<data today="today_press_high">1018 hPa</data>
+</realtime>
+<realtime>
+<data today="today_hour_rainfall">NA</data>
+</realtime>
+<realtime>
+<data today="today_rainfall">NA</data>
+</realtime>
+<realtime>
+<data today="today_max_windspeed">NA</data>
+</realtime>
+<realtime>
+<data today="today_max_windgust">NA</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_temp_low">-25 C</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_temp_high">100 C</data>
+</realtime>
+</maintag>

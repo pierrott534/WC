@@ -1,0 +1,190 @@
+body {
+	font: 100% 'Verdana', 'Helvetica', 'Arial', sans-serif;
+		text-align: center;
+	}
+	
+#console {
+	border: solid;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	border-color:black;
+	background-color: #eeeeee;
+	width: 920px;
+	height: 600px;
+	margin: 0px auto; /* Right And Left Margin Widths To Auto */
+	text-align: left; /* Hack To Keep IE5 Windows Happy */
+	}
+	
+#right-panel {
+	float:right;
+	}
+	
+#center-panel {
+	float:center;
+	}
+	
+#c_title {
+	font-size: 120%;
+	color: #382f85;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+}
+
+#c_press {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	display: none;
+	}
+	
+#c_ephmer {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	display: none;
+	}
+	
+#c_out {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 10px;
+	margin-bottom: 40px;
+	margin-right: 5px;
+	display: none;
+	}
+	
+#c_int {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	display: none;
+	}	
+
+#c_wind {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	display: none;
+		}	
+	
+#c_rain {
+	width: 300px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: grey;
+	padding-bottom: 5px;
+	margin-bottom: 180px;
+	display: none;
+	}
+
+#c_today {
+	width: 770px;
+	border: solid;
+	border-width: 1px;
+	border-color:black;
+	background: white;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	padding-left:70px;
+	display: none;
+	}	
+	
+.box-title {
+	font-size: 110%;
+	padding-left: 5px;
+	padding-top: 0px;
+	color: #382f85;
+	}
+	
+table {
+	font-size: 80%;
+	}
+	
+.box-field {
+	background: black;
+	border: solid;
+	border-width: 1px;
+	width: 100px;
+	color: white;
+	text-align: right;
+	padding-right: 5px;
+	}
+	
+.tbox-field {
+	background: black;
+	border: solid;
+	border-width: 1px;
+	width: 180px;
+	color: white;
+	text-align: right;
+	padding-right: 5px;
+	}	
+	
+.box-label {
+	width: 150px;
+	text-align: left;
+	padding-left: 5px;
+	}
+
+.tbox-label {
+	width: 200px;
+	text-align: left;
+	padding-left: 5px;
+	}
+	
+#footer {
+	font-size: 60%;
+	color: grey;
+	text-align: center;
+	display: none;
+	}
+	
+#wait-msg {
+	font-size: 120%;
+	color: green;
+	text-align:center;
+	padding-top: 100px;
+	}
+
+#forecast {
+	font-size: 75%;
+	color: green;
+	text-align: center;
+	}
+
+#beaufort {
+	font-size:75%;
+	}
+	
+#popout-icon {
+        float: right;
+        border: none;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+		color: #382f85;
+}

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-15" ?>
+<maintag>
+<misc>
+<data misc="refresh_time">2014.03.23. 20:01:34</data>
+</misc>
+<misc>
+<data misc="forecast_nr">9</data>
+</misc>
+<realtime>
+<data misc="winddir">N</data>
+</realtime>
+<realtime>
+<data misc="location">Bourgoin-Jallieu</data>
+</realtime>
+<realtime>
+<data realtime="forecast_text">Showery early, improving</data>
+</realtime>
+<realtime>
+<data realtime="temp">17.3°</data>
+</realtime>
+<realtime>
+<data realtime="intemp">25.1°</data>
+</realtime>
+<realtime>
+<data realtime="hum">82%</data>
+</realtime>
+<realtime>
+<data realtime="inhum">49%</data>
+</realtime>
+<realtime>
+<data realtime="press">1015.58 hPa</data>
+</realtime>
+<realtime>
+<data realtime="presstrendval">1.19 hPa</data>
+</realtime>
+<realtime>
+<data realtime="dew">14.2°</data>
+</realtime>
+<realtime>
+<data realtime="current_rainfall">0.0 mm</data>
+</realtime>
+<realtime>
+<data realtime="last_hour_rainfall">0.0 mm</data>
+</realtime>
+<realtime>
+<data realtime="avg_windspeed">2</data>
+</realtime>
+<realtime>
+<data realtime="high_windgust">8</data>
+</realtime>
+<realtime>
+<data realtime="windunit">km/h</data>
+</realtime>
+<realtime>
+<data realtime="wchill">17.3°</data>
+</realtime>
+<realtime>
+<data realtime="avg_dir">N</data>
+</realtime>
+<realtime>
+<data today="today_temp_high">29.5°</data>
+</realtime>
+<realtime>
+<data today="today_temp_low">17.3°</data>
+</realtime>
+<realtime>
+<data today="today_press_high">1017.55 hPa</data>
+</realtime>
+<realtime>
+<data today="today_press_low">1011.86 hPa</data>
+</realtime>
+<realtime>
+<data today="today_hour_rainfall">0.4 mm</data>
+</realtime>
+<realtime>
+<data today="today_rainfall">0.0 mm</data>
+</realtime>
+<realtime>
+<data today="today_max_windspeed">9 km/h</data>
+</realtime>
+<realtime>
+<data today="today_max_windgust">21 km/h</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_temp_high">29.3°</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_temp_low">16.6°</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_press_high">1018.83 hPa</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_press_low">1014.57 hPa</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_rainfall">0.0 mm</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_max_windspeed">8 km/h</data>
+</realtime>
+<realtime>
+<data yesterday="yesterday_max_windgust">26 km/h</data>
+</realtime>
+<realtime>
+<data record="rec_high_temp">41.8°</data>
+</realtime>
+<realtime>
+<data record="rec_low_temp">-1.9°</data>
+</realtime>
+<realtime>
+<data record="rec_high_press">1035.66 hPa</data>
+</realtime>
+<realtime>
+<data record="rec_low_press">991.74 hPa</data>
+</realtime>
+<realtime>
+<data record="rec_day_rainfall">129.0 mm</data>
+</realtime>
+<realtime>
+<data record="rec_hour_rainfall">62.4 mm</data>
+</realtime>
+<realtime>
+<data record="rec_max_windspeed">35 km/h</data>
+</realtime>
+<realtime>
+<data record="rec_max_windgust">63 km/h</data>
+</realtime>
+</maintag>
+

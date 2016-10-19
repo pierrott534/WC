@@ -1,0 +1,354 @@
+#!/usr/bin/python
+# -*- coding: ISO-8859-15 -*-
+
+# Thierry Jouve - Bruno Chevillion - 27/06/13
+# Addon et Modif P TIROLE
+
+import urllib2
+import smtplib
+import os
+import sys
+import subprocess
+import re
+import time
+import socket
+from email.MIMEText import MIMEText
+
+
+SEUIL = '19'
+FILE = '/var/www/html/WC/realtime.txt'
+FILE2 = '/var/www/html/WC/realtime.xml'
+HOST = 'rasp'
+PORT = 50000
+HOST2 = 'rasp'
+PORT2 = 50000
+
+def _(msg) : return msg
+
+forecast_text = {
+    'A' : _("1"),
+    'B' : _("2"),
+    'C' : _("3"),
+    'D' : _("4"),
+    'E' : _("5"),
+    'F' : _("6"),
+    'G' : _("7"),
+    'H' : _("8"),
+    'I' : _("9"),
+    'J' : _("10"),
+    'K' : _("11"),
+    'L' : _("12"),
+    'M' : _("13"),
+    'N' : _("14"),
+    'O' : _("15"),
+    'P' : _("16"),
+    'Q' : _("17"),
+    'R' : _("18"),
+    'S' : _("19"),
+    'T' : _("20"),
+    'U' : _("21"),
+    'V' : _("22"),
+    'W' : _("23"),
+    'X' : _("24"),
+    'Y' : _("25"),
+    'Z' : _("26")
+    }
+
+del _
+
+def ZambrettiCode(pressure, month, wind, trend,
+                  north=True, baro_top=1050.0, baro_bottom=950.0):
+    """Simple implementation of Zambretti forecaster algorithm.
+    Inspired by beteljuice.com Java algorithm, as converted to Python by
+    honeysucklecottage.me.uk, and further information
+    from http://www.meteormetrics.com/zambretti.htm"""
+    # normalise pressure
+    pressure = 950.0 + ((1050.0 - 950.0) *
+                        (pressure - baro_bottom) / (baro_top - baro_bottom))
+    # adjust pressure for wind direction
+    if wind != None:
+        if not north:
+            # southern hemisphere, so add 180 degrees
+            wind = (wind + 8) % 16
+        pressure += (  5.2,  4.2,  3.2,  1.05, -1.1, -3.15, -5.2, -8.35,
+                     -11.5, -9.4, -7.3, -5.25, -3.2, -1.15,  0.9,  3.05)[wind]
+    # compute base forecast from pressure and trend (hPa / hour)
+    if trend >= 0.1:
+        # rising pressure
+        if north == (month >= 4 and month <= 9):
+            pressure += 3.2
+        F = 0.1740 * (1031.40 - pressure)
+        LUT = ('A', 'B', 'B', 'C', 'F', 'G', 'I', 'J', 'L', 'M', 'M', 'Q', 'T',
+               'Y')
+    elif trend <= -0.1:
+        # falling pressure
+        if north == (month >= 4 and month <= 9):
+            pressure -= 3.2
+        F = 0.1553 * (1029.95 - pressure)
+        LUT = ('B', 'D', 'H', 'O', 'R', 'U', 'V', 'X', 'X', 'Z')
+    else:
+        # steady
+        F = 0.2314 * (1030.81 - pressure)
+        LUT = ('A', 'B', 'B', 'B', 'E', 'K', 'N', 'N', 'P', 'P', 'S', 'W', 'W',
+               'X', 'X', 'X', 'Z')
+    # clip to range of lookup table
+    F = min(max(int(F + 0.5), 0), len(LUT) - 1)
+    # convert to letter code
+    return LUT[F]
+
+def ZambrettiText(letter):
+    return forecast_text[letter]
+
+def retour_sock(host, port, sonde):
+	# 1) creation du socket :
+	mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+	# 2) envoi d'une requete de connexion au serveur :
+	try:
+	    mySocket.connect((host, port))
+	except socket.error:
+	    print "La connexion a echouee avec %s" % host
+	    sys.exit()
+	print "Connexion etablie avec le serveur."
+
+	# 3) Dialogue avec le serveur :
+	msgServeur = mySocket.recv(1024)
+	mySocket.send(sonde)
+	val1 = mySocket.recv(1024)
+	val2 = mySocket.recv(1024)
+	mySocket.send("STOP")
+	msgClient =  mySocket.recv(1024)
+	if (msgClient == "STOP"):
+	        mySocket.close()
+#	print "Connexion interrompue."
+	mySocket.close()
+	return(val1 , val2)
+
+def sendTextMail(text):
+	fromaddr = "METEO <meteo@free.fr>"
+	liste_destinataires=['maison.tirole@free.fr']
+    	mail = MIMEText(text)
+    	mail['From'] = fromaddr
+    	mail['Subject'] = "Alerte Temperature"
+    	smtp = smtplib.SMTP()
+    	smtp.connect()
+    	for d in liste_destinataires:
+    		smtp.sendmail(fromaddr,d,mail.as_string())
+    	smtp.close()
+
+def envoi_mail(temp):
+	corps = """\
+Bonjour,
+ 
+La temperature mesuree par ubuntu est inferieure a %s degres.
+Elle est de %s
+ 
+""" % (SEUIL,temp)
+	corps+="""\
+"""
+ 
+	sendTextMail(corps)
+
+
+# Read sensors (indoor/outdoor temperature + humidity) :
+indoor_results = retour_sock(HOST, PORT, "IN")
+pression = retour_sock(HOST, PORT, "PR")
+pressure = pression[0]
+tempss = pression[1]
+outdoor_results = retour_sock(HOST, PORT, "EX")
+wind = retour_sock(HOST2, PORT, "WI")
+
+indoor_temp = indoor_results[0]
+indoor_humidity = indoor_results[1]
+outdoor_temp = outdoor_results[0]
+outdoor_humidity = outdoor_results[1]
+contenu = ["vide" , "vide"]
+
+file = open(FILE, "r")
+contenu = file.read()
+file.close()
+contenu = contenu.split(" ")
+longueur = len(contenu)
+rajout = 58 - longueur
+
+for i in range(rajout):
+  contenu.append(i)
+
+Heure = float(time.strftime('%H',time.localtime()))
+
+if (Heure == 0):
+   contenu[26] = outdoor_temp
+   contenu[27] = time.strftime('%H:%M',time.localtime())
+   contenu[28] = outdoor_temp
+   contenu[29] = time.strftime('%H:%M',time.localtime())
+   contenu[34] = pressure
+   contenu[35] = time.strftime('%H:%M',time.localtime())
+   contenu[36] = pressure
+   contenu[37] = time.strftime('%H:%M',time.localtime())
+else:
+  if (float(contenu[26]) < float(outdoor_temp)):
+      contenu[26] = outdoor_temp
+      contenu[27] = time.strftime('%H:%M',time.localtime())
+  if (float(contenu[28]) > float(outdoor_temp)):
+      contenu[28] = outdoor_temp
+      contenu[29] = time.strftime('%H:%M',time.localtime())
+  if (float(contenu[34]) > pressure):
+      contenu[34] =pressure
+      contenu[35] = time.strftime('%H:%M',time.localtime())
+  if (float(contenu[36]) < pressure):
+      contenu[36] = pressure
+      contenu[37] = time.strftime('%H:%M',time.localtime())
+
+
+
+contenu[0] = time.strftime('%d/%m/%y',time.localtime())
+contenu[1] = time.strftime('%H:%M:%S',time.localtime())
+if (float(outdoor_temp) > float(contenu[2])):
+   contenu[25] = "+%.2f" % (float(outdoor_temp) - float(contenu[2]))
+else:
+   contenu[25] = "%.2f" % (float(outdoor_temp) - float(contenu[2]))
+contenu[2] = outdoor_temp
+contenu[3] = outdoor_humidity
+contenu[4] = "NA"
+contenu[5] = wind[0]
+contenu[6] = wind[0]
+contenu[7] = "NA"
+contenu[8] = "NA"
+contenu[9] = "NA"
+#if (pressure > float(contenu[10])):
+#  contenu[18] = "+%.2f" % (float(pressure) - float(contenu[10]))
+#else:
+#  contenu[18] = "%.2f" % (float(pressure) - float(contenu[10]))
+contenu[18] = "%.2f" % (float(pressure) - float(contenu[10]))
+contenu[10] = pressure
+contenu[11] = wind[1]
+contenu[12] = "NA"
+contenu[13] = "km/h"
+contenu[14] = "C"
+contenu[15] = "hPa"
+contenu[16] = "mm"
+contenu[17] = "NA"
+contenu[19] = "NA"
+contenu[20] = "NA"
+contenu[21] = "NA"
+contenu[22] = indoor_temp
+contenu[23] = indoor_humidity
+contenu[24] = "NA"
+contenu[30] = "NA"
+contenu[31] = "NA"
+contenu[32] = "NA"
+contenu[33] = "NA"
+contenu[38] = "NA"
+contenu[39] = "NA"
+contenu[40] = "NA"
+contenu[41] = "NA"
+contenu[42] = "NA"
+contenu[43] = "NA"
+contenu[44] = "NA"
+contenu[45] = "NA"
+contenu[46] = "NA"
+contenu[47] = "NA"
+contenu[48] = ZambrettiText(ZambrettiCode(float(pressure), 10, 8, float(contenu[18])))
+contenu[49] = "1"
+contenu[50] = "NA"
+contenu[51] = "N"
+contenu[52] = "NA"
+contenu[53] = "NA"
+contenu[54] = "NA"
+contenu[55] = tempss
+contenu[56] = "NA"
+contenu[57] = "NA"
+contenu[58] = "END"
+
+
+file = open(FILE, "w")
+for element in contenu:
+  file.write("%s " % element)
+file.close()
+
+BASE =  "http://192.168.1.5/emoncms/input/post.json?node1&csv=%s,%s,%s&apikey=79db7b521aec410afc918a92bee06ccd" % (contenu[2], contenu[3], contenu[10])
+#urllib2.urlopen(BASE)
+
+SMS = "/usr/local/bin/googalert \"Temperature en alerte sur ubuntu de %s\" \"Temperature interieure de %s\" " % (contenu[22], contenu[22])
+
+if (float(indoor_temp) < float (SEUIL)):
+   envoi_mail(indoor_temp)
+   if not(os.path.isfile("/var/www/html/WC/sms.flag")):
+	os.system("%s" % SMS)
+	flag=open("/var/www/html/WC/sms.flag","w")
+	flag.write("Debut Alarme %s %s\n" % (contenu[0],contenu[1]))
+	flag.close()
+else:
+   if (os.path.isfile("/var/www/html/WC/sms.flag")):
+	os.remove("/var/www/html/WC/sms.flag")
+
+ 
+file = open(FILE2, "w")
+file.write("<?xml version=\"1.0\" encoding=\"ISO-8859-15\" ?>\n")
+file.write("<maintag>\n")
+file.write("<misc>\n")
+file.write("<data misc=\"refresh_time\">%s %s</data>\n" % (contenu[0],contenu[1]))
+file.write("</misc>\n")
+file.write("<misc>\n")
+file.write("<data misc=\"forecast_nr\">25</data>\n")
+file.write("</misc>\n")
+file.write("<realtime>\n")
+file.write("<data misc=\"location\">Bourgoin-Jallieu</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"forecast_text\">Showery early, improving</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"temp\">%s C</data>\n" % outdoor_temp)
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"intemp\">%s C</data>\n" % indoor_temp)
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"hum\">%s </data>\n" % outdoor_humidity)
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"inhum\">%s </data>\n" % indoor_humidity)
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"press\">%s hPa</data>\n" % pressure)
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"winddir\">E</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data realtime=\"windspeed\">2312</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_temp_low\">%s C</data>\n" % contenu[28])
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_temp_high\">%s C</data>\n" % contenu[26])
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_press_low\">%s hPa</data>\n" % contenu[36])
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_press_high\">%s hPa</data>\n" % contenu[34])
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_hour_rainfall\">NA</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_rainfall\">NA</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_max_windspeed\">NA</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data today=\"today_max_windgust\">NA</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data yesterday=\"yesterday_temp_low\">-25 C</data>\n")
+file.write("</realtime>\n")
+file.write("<realtime>\n")
+file.write("<data yesterday=\"yesterday_temp_high\">100 C</data>\n")
+file.write("</realtime>\n")
+
+file.write("</maintag>\n")
+file.close()
