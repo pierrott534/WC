@@ -1,0 +1,140 @@
+#logo {
+    position:absolute;
+    left: 180px;
+    top: 34px;}
+     
+.Style_ext {
+    position:absolute;
+    left: 400px;
+    top: 5px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#00FFFF;}
+
+.Style_ext_temp {
+    position:absolute;
+    left: 420px;
+    top: 20px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_ext_hum {
+    position:absolute;
+    left: 420px;
+    top: 35px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_ext_vent {
+    position:absolute;
+    left: 420px;
+    top: 65px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_ext_rain {
+    position:absolute;
+    left: 420px;
+    top: 80px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_ext_press {
+    position:absolute;
+    left: 420px;
+    top: 50px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_comble {
+    position:absolute;
+    left: 150px;
+    top: 61px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#00FFFF;}
+
+.Style_comble_temp {
+    position:absolute;
+    left: 170px;
+    top: 76px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_comble_hum {
+    position:absolute;
+    left: 170px;
+    top: 91px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_1 {
+    position:absolute;
+    left: 210px;
+    top: 120px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#00FFFF;}
+
+.Style_1_temp {
+    position:absolute;
+    left: 230px;
+    top: 135px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_1_hum {
+    position:absolute;
+    left: 230px;
+    top: 150px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#00FFFF;}
+
+.Style_ss {
+    position:absolute;
+    left: 190px;
+    top: 241px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#00FFFF;}
+
+.Style_ss_temp {
+    position:absolute;
+    left: 210px;
+    top: 256px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_ss_hum {
+    position:absolute;
+    left: 210px;
+    top: 271px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 14px;
+    color:#FFFFFF;}
+
+.Style_back {
+    position:absolute;
+    left: 20px;
+    top: 410px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 16px;
+    color:#FF00FF;}
+
+.Style_maj {
+    position:absolute;
+    left: 400px;
+    top: 400px;
+    font-family: Gabriola, "Gentium Basic", Georgia;
+    font-size: 16px;
+    color:#FFFF00;}

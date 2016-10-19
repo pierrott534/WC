@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+<title>Weather Console - M&eacutet&eacuteo &agrave Bourgoin-Jallieu</title>
+
+<link href="wconsole.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="jquery.js" type="text/javascript"></script>
+
+<script src="wconsole.js" type="text/javascript"></script>
+
+
+</head>
+
+<body>
+<div id="console">
+<div id="c_title">
+
+RaspServ - M&eacutet&eacuteo &agrave Bourgoin-Jallieu
+
+<br/>
+<span id="forecast"></span>
+<p id="wait-msg">Lecture des donn&eacutees, un moment s'il vous plait</p>
+</div>  <!-- end of c_title -->
+<div id="right-panel">
+<div id="c_wind">
+<p class="box-title">Vent</p>
+<table>
+<tr><td class="box-label">Derni&egravere valeur</td><td class="box-field" id="windlatest"></td></tr>
+<tr><td class="box-label">Direction</td><td class="box-field" id="winddir"></td></tr>
+<tr><td class="box-label">10 min. average</td><td class="box-field" id="windavg"></td></tr>
+<tr><td class="box-label">Beaufort Scale</td><td class="box-field" id="beaufort"></td></tr>
+</table>
+</div>  <!-- end of c_wind -->
+<p/>
+<div id="c_rain">
+<p class="box-title">Pr&eacutecipitations</p>
+<table>
+<tr><td class="box-label">Moyenne actuelle</td><td class="box-field" id="rainrate"></td></tr>
+<tr><td class="box-label">Au cours de la derni&egravere heure</td><td class="box-field" id="rainhour"></td></tr>
+<tr><td class="box-label">Aujourd'hui</td><td class="box-field" id="raintoday"></td></tr>
+</table>
+</div>  <!-- end of c_rain -->
+</div>  <!-- ennd of right-panel -->
+
+<div id="right-panel">
+<div id="c_press">
+<p class="box-title">Pression</p>
+<table>
+<tr><td class="box-label">Derni&egravere valeur</td><td class="box-field" id="pressure"></td></tr>
+<tr><td class="box-label">Diff&eacuterence au cours de la derniere p&eacuteriode</td><td class="box-field" id="presstrend"></td></tr>
+</table>
+</div>  <!-- end of c_press -->
+<div id="c_ephmer">
+<p class="box-title">Aujourd'hui</p>
+<table>
+<tr><td class="box-label">Lever du jour</td><td class="box-field" id="matin"></td></tr>
+<tr><td class="box-label">Coucher de soleil</td><td class="box-field" id="soir"></td></tr>
+</table>
+</div>  <!-- end of c_Ephmer -->
+</div>
+
+<div id="c_int">
+<p class="box-title">Int&eacuterieur</p>
+<table>
+<tr><td class="box-label">Temp&eacuterature salon</td><td class="box-field" id="intemp"></td></tr>
+<tr><td class="box-label">Humidit&eacute salon</td><td class="box-field" id="inhum"></td></tr>
+<tr><td class="box-label">Temp&eacuterature sous-sol</td><td class="box-field" id="tempss"></td></tr>
+</table>
+</div>  <!-- end of c_int -->
+
+<div id="c_out">
+<p class="box-title">Ext&eacuterieur</p>
+<table>
+<tr><td class="box-label">Temp&eacuterature</td><td class="box-field" id="temp"></td></tr>
+<tr><td class="box-label">Diff&eacuterence au cours de la derniere p&eacuteriode</td><td class="box-field" id="temptrend"></td></tr>
+<tr><td class="box-label">Humidit&eacute</td><td class="box-field" id="hum"></td></tr>
+</table>
+</div>  <!-- end of c_int -->
+
+
+
+<div id="c_today">
+<p class="box-title">Records du jour</p>
+<table>
+<tr><td class="tbox-label">Temp&eacuterature la plus haute</td><td class="tbox-field" id="today-temphigh"></td></tr>
+<tr><td class="tbox-label">Temp&eacuterature la plus basse</td><td class="tbox-field" id="today-templow"></td></tr>
+<tr><td class="tbox-label">Highest Wind gust</td><td class="tbox-field" id="today-windgust"></td></tr>
+<tr><td class="tbox-label">Highest Wind 10 min. avg.</td><td class="tbox-field" id="today-windavg"></td></tr>
+<tr><td class="tbox-label">Pression la plus haute</td><td class="tbox-field" id="today-presshigh"></td></tr>
+<tr><td class="tbox-label">Pression la plus basse</td><td class="tbox-field" id="today-presslow"></td></tr>
+</table>
+</div>  <!-- end of c_press -->
+<p id="footer">Dernier contact avec la station: <span id="last_contact"></span>.  Mise &agrave jour dans: <span id="refresh_in">0</span> secondes 
+<a href="wconsole.html" onclick="return popup(this, 'wconsole')"><img id="popout-icon" src="popout.gif" alt="popout"/></a></p>
+</div>  <!-- end of console -->
+</body>
+</html>
